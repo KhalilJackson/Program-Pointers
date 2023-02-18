@@ -54,13 +54,37 @@ char** command_parse(char* line, int* foreground) {
  * Parameters:
  *
  * - command: a non-NULL pointer to the command array to print.
- */
+ *
+
+ A variation on command_print intended for use while debugging.
+ The output should make it clear what strings the command array holds, but
+ the exact format is up to you (as opposed to command_print, 
+where the format is prescribed). For example, you might choose
+ to print each word of the command array on separate lines to clearly delineate 
+the word boundaries. Make sure that the output lets you distinguish correct words 
+from incorrect words. For example, your output should let you distinguish 
+the valid, isolated word "ls" versus the string "ls  " that has trailing spaces 
+in the string and therefore is not a valid word.
+
+
+*/
 void command_show(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
 
   // IMPLEMENT ME
+  //char** p = command; 
 
+for (char** p = command; *p != NULL; p++) {
+	char* str = *p;  
+	for (char* p2 = str; *p2 != '\0'; p2++) {
+		if (*p2 == ' '){
+			*p2 = '_';
+		}
+	}
+	printf(str);
+	printf("\n"); 
+    }
 }
 
 /**
