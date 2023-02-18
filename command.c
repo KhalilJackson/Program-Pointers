@@ -76,14 +76,18 @@ void command_show(char** command) {
   //char** p = command; 
 
 for (char** p = command; *p != NULL; p++) {
-	char* str = *p;  
-	for (char* p2 = str; *p2 != '\0'; p2++) {
+	//char* str = malloc(sizeof(char) * 100);   
+	//char* p2 = *((char*)p 	
+
+	for (char* p2 = (char*)*p; *p2 != '\0'; p2++) {
 		if (*p2 == ' '){
 			*p2 = '_';
 		}
+		printf(p2); 
 	}
-	printf(str);
 	printf("\n"); 
+		//printf(p);
+	//printf("\n"); 
     }
 }
 
