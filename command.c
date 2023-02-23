@@ -93,15 +93,32 @@ printf("\n");
  *
  * Parameters:
  *
+
+array:
+{ "gcc", "-Wall", "-o", "foo", "foo.c", NULL };
+
+desired output: 
+ gcc -Wall -o foo foo.c
+
+
  * - command: non-NULL pointer to the command array to print.
- */
+ 
+Print a command array in the form of a command line, 
+with the command words separated by single spaces. 
+It is fine if there is a space after the final word. 
+However, do not include quotes, ampersands (for background commands), or newline characters ('\n'). 
+You should use the printf function here.*/
+
 void command_print(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
 
-  // IMPLEMENT ME
-
+for (char** p = command; *p != NULL; p+=1) {
+	printf (*p); 
+	printf(" "); 
 }
+}
+
 
 /**
  * command_free:
