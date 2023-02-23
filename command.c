@@ -41,13 +41,12 @@ char** command_parse(char* line, int* foreground) {
   assert(line);
   assert(foreground);
 
-  // IMPLEMENT ME
 
+//count number words in line and detect use of &
+//return null for invalid commands
 int inWord = 0; 
 *foreground = 1; //1 when no ampersand;  
 int count = 0; 
-//int countA  = 0; 
-
 
 for (char* p = line; *p != '\0'; p++) {
 if (*p == '&') {
@@ -55,12 +54,15 @@ if (*p == '&') {
 	printf("here INVALID"); 	
 	return NULL; 
 	} else {
+		if (inWord == 1) {
+			count++; 
+		}
 		*foreground = 0; 
-//		countA = count; 	
+		inWord = 0; 		
 	}
-}else if (*p != ' ') {
+} else if (*p != ' ') {
 	inWord = 1; 
-} else if (*p  == ' ') {
+} else if (*p  == ' ' ) {
 	if (inWord == 1) {
 		count++; 
 		inWord = 0; 
@@ -77,14 +79,6 @@ return NULL;
 }
 }
 
-
-//if (countA != count) {
-//	printf("there INVALID "); 
-//		return NULL;
-//}
-//}
-
-
 if (inWord == 1) {
 count++;
 }
@@ -92,12 +86,13 @@ count++;
 printf("%d", count); 
 printf("\n"); 
 
-return NULL;
+
+//allocate top-level command array
+
+
 }
 
 
-//count number words in line and detect use of &
-//return null for invalid commands
 
 
 //allocate top-level command array
