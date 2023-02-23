@@ -46,18 +46,17 @@ char** command_parse(char* line, int* foreground) {
 int inWord = 0; 
 *foreground = 1; //1 when no ampersand;  
 int count = 0; 
-int countA  = 0; 
+//int countA  = 0; 
 
 
 for (char* p = line; *p != '\0'; p++) {
 if (*p == '&') {
 	if (*foreground == 0) { //it will be 0 if & already appeared 
-	printf("here"); 	
+	printf("here INVALID"); 	
 	return NULL; 
 	} else {
 		*foreground = 0; 
-		countA = count; 	
-		inWord = 0; 
+//		countA = count; 	
 	}
 }else if (*p != ' ') {
 	inWord = 1; 
@@ -72,11 +71,18 @@ if (*p == '&') {
 }
 
 if (*foreground == 0) {
-if (countA != count) {
-	printf("there"); 
-return NULL;
+if (inWord == 1) {
+printf("NEW INVLAID"); 
+return NULL; 
 }
 }
+
+
+//if (countA != count) {
+//	printf("there INVALID "); 
+//		return NULL;
+//}
+//}
 
 
 if (inWord == 1) {
