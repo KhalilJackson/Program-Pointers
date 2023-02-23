@@ -72,24 +72,18 @@ void command_show(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
 
-  // IMPLEMENT ME
-  //char** p = command; 
-
-for (char** p = command; *p != NULL; p++) {
-	//char* str = malloc(sizeof(char) * 100);   
-	//char* p2 = *((char*)p 	
-
-	for (char* p2 = (char*)*p; *p2 != '\0'; p2++) {
-		if (*p2 == ' '){
-			*p2 = '_';
-		}
-		printf(p2); 
-	}
-	printf("\n"); 
-		//printf(p);
-	//printf("\n"); 
-    }
+// _ indicates start and end of elmenet
+// _ clearly delineates word boundaries of command array
+// _ makes it easy to see if there is a space before the last _ (which indicates 
+//that the element has a trailing space, and therefore invalid. 
+for (char** p = command; *p != NULL; p+=1) {
+	printf("_"); 
+	printf(*p); 
 }
+printf("_"); 
+printf("\n");
+}
+
 
 /**
  * command_print:
