@@ -42,8 +42,22 @@ char** command_parse(char* line, int* foreground) {
   assert(foreground);
 
   // IMPLEMENT ME
+//for (char* p = line; p != '\0'; p++) {
+//int count = 0; 
+//if (*p == ' ') {
+//	p
+//}
 
-  return NULL;
+//count number words in line and detect use of &
+//return null for invalid commands
+//mark foreground/background status for valid commands
+
+//allocate top-level command array
+
+//for each word, allocate space to hold word as null terminated string, 
+//copy word into the space, save it in command array
+  
+return NULL;
 }
 
 /**

@@ -46,11 +46,31 @@ static char** COMMAND_ARRAYS[] = {
  *
  * You should add many (many!) more tests to this array to make sure
  * that you are following the full parsing specification!
- */
+ *
+
+valid chara within a word (no space and no &)
+& can only appear once, after final world (seperated by 0 or more spaces) and can be followed
+by 0 or more spaces
+
+*/
 static char* COMMAND_LINES[] = {
-  "Hello world!  Please parse    me.",
-  " & this is invalid",
+  "Hello world!  Please parse    me.", //valid ?? i think?
+  " & this is invalid", //invalid
   "YOUR COMMAND LINE HERE",
+"nano proj2/command.c &",//valid 
+"      ls -l fcs-labs", //valid
+"  ls       -l   fcs-labs    ",
+"ls -l   fcs-labs      ",
+"nano&",
+"   nano&  ", //valid
+"nano &", //valid
+
+"&uhoh", //invalid
+" &   uh oh", //invalid
+"uh oh & &", //invalid
+"uh & oh", //invalid
+"u&h oh" //invalid
+
 };
 
 
