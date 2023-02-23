@@ -42,23 +42,64 @@ char** command_parse(char* line, int* foreground) {
   assert(foreground);
 
   // IMPLEMENT ME
-//for (char* p = line; p != '\0'; p++) {
-//int count = 0; 
-//if (*p == ' ') {
-//	p
-//}
+
+int inWord = 0; 
+*foreground = 1; //1 when no ampersand;  
+int count = 0; 
+int countA  = 0; 
+
+
+for (char* p = line; *p != '\0'; p++) {
+if (*p == '&') {
+	if (*foreground == 0) { //it will be 0 if & already appeared 
+	printf("here"); 	
+	return NULL; 
+	} else {
+		*foreground = 0; 
+		countA = count; 	
+		inWord = 0; 
+	}
+}else if (*p != ' ') {
+	inWord = 1; 
+} else if (*p  == ' ') {
+	if (inWord == 1) {
+		count++; 
+		inWord = 0; 
+	} else {
+		inWord = 0; 
+	}
+}
+}
+
+if (*foreground == 0) {
+if (countA != count) {
+	printf("there"); 
+return NULL;
+}
+}
+
+
+if (inWord == 1) {
+count++;
+}
+
+printf("%d", count); 
+printf("\n"); 
+
+return NULL;
+}
+
 
 //count number words in line and detect use of &
 //return null for invalid commands
-//mark foreground/background status for valid commands
+
 
 //allocate top-level command array
 
 //for each word, allocate space to hold word as null terminated string, 
-//copy word into the space, save it in command array
-  
-return NULL;
-}
+//copy word into the space, save it in command array  
+//return NULL;
+//}
 
 /**
  * command_show:
