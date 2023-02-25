@@ -47,12 +47,14 @@ char** command_parse(char* line, int* foreground) {
 int inWord = 0; 
 *foreground = 1; //1 when no ampersand;  
 int count = 0; 
-
+int charCount = 0; 
+//char* last = line;  
 for (char* p = line; *p != '\0'; p++) {
+//last = p; 
+
 if (*p == '&') {
 	if (*foreground == 0) { //it will be 0 if & already appeared 
-	printf("here INVALID"); 	
-	return NULL; 
+		return NULL; 
 	} else {
 		if (inWord == 1) {
 			count++; 
@@ -61,7 +63,8 @@ if (*p == '&') {
 		inWord = 0; 		
 	}
 } else if (*p != ' ') {
-	inWord = 1; 
+	inWord = 1;
+	charCount++;  
 } else if (*p  == ' ' ) {
 	if (inWord == 1) {
 		count++; 
@@ -72,26 +75,90 @@ if (*p == '&') {
 }
 }
 
+
 if (*foreground == 0) {
-if (inWord == 1) {
-printf("NEW INVLAID"); 
-return NULL; 
-}
+	if (inWord == 1) {
+		return NULL; 
+	}
 }
 
+
 if (inWord == 1) {
-count++;
+	count++;                          
 }
 
 printf("%d", count); 
 printf("\n"); 
+printf("%d", charCount); 
+//printf("%li", &line-((&last)+1)); 
+
+//save the last p memory position, subtract that from the og position to find out length of array
+
+//create a char** of that length 
 
 
-//allocate top-level command array
 
+//call helper method and pass in line (and it'll keep  cutting itself) so pass in p1
+
+//malloc the size of ALL the characters
+//add it to this array
+//return pointer to the first
+
+
+
+//every time there is a character, add it to this array
+//
+
+
+char** commandArr = malloc(sizeof(char*) * count+1);
+int wordNumber = 0; 
+//int letterNumber = 0; 
+for (char* p1 = line; *p1 != '\0'; p1++) { 
+if (*p1 == '&') {
+	inWord = 0;         
+} else if (*p1 != ' ') {
+	//commandArr[wordNumber][letterNumber] = *p1; //cannot access memory at commandArr[0][0]
+//bcuz theres no space to hold the array of letters itself 
+        if (inWord == 0) {
+                commandArr[wordNumber] = p1; // so *commandArr is "world! please parse..
+						//because *commandArr type is char* aka str 
+                inWord = 1;
+		wordNumber++; 		
+        }
+	//letterNumber++; 
+} else if (*p1  == ' ' ) {
+        inWord = 0;
+	//letterNumber = 0;          
+}
+
+}
+return NULL; 
+}
+
+/**
+//p1 is type char*
+// *p1 is type char tho.....
+//maybe u want to  just assign p1 an 
+//idk ? 
+
+
+//char* word = malloc(sizeof(char) * wordLENGTH
+return NULL;
 
 }
 
+
+char* parse_helper(char* word, int totalChar) {
+char* argArr = malloc(sizeof(char) * totalChar); 
+
+for (char* p = word; *p !=  '\0'; p++) {
+	if (*p == '&') {
+		inWord = 0; 
+	if (*p == ' ') {
+		
+
+inWord = 1; 
+		
 
 
 
@@ -101,6 +168,8 @@ printf("\n");
 //copy word into the space, save it in command array  
 //return NULL;
 //}
+*/
+
 
 /**
  * command_show:
