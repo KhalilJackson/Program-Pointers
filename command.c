@@ -11,6 +11,30 @@
 #include <stdio.h>
 #include "command.h"
 
+
+
+
+char* parse_helper(char* word, int totalChar) {
+
+char* argArr = malloc(sizeof(char) * totalChar); 
+int index = 0; 
+for (char* p = word; *p !=  '\0'; p++) {
+        if (*p != ' ' && *p != '&') {
+                argArr[index] = *p; 
+                index++; 
+        }else if (*p == ' ') {
+                index++; 
+                argArr[index] = '\0'; 
+                return argArr; 
+        }
+}
+index++; 
+argArr[index] = '\0'; 
+return argArr; 
+}
+
+
+
 /**
  * command_parse:
  *
@@ -109,7 +133,7 @@ printf("%d", charCount);
 //every time there is a character, add it to this array
 //
 
-
+inWord = 0; 
 char** commandArr = malloc(sizeof(char*) * count+1);
 int wordNumber = 0; 
 //int letterNumber = 0; 
@@ -120,8 +144,8 @@ if (*p1 == '&') {
 	//commandArr[wordNumber][letterNumber] = *p1; //cannot access memory at commandArr[0][0]
 //bcuz theres no space to hold the array of letters itself 
         if (inWord == 0) {
-                commandArr[wordNumber] = p1; // so *commandArr is "world! please parse..
-						//because *commandArr type is char* aka str 
+		commandArr[wordNumber] = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
+				//because *commandArr type is char* aka str 
                 inWord = 1;
 		wordNumber++; 		
         }
@@ -132,10 +156,10 @@ if (*p1 == '&') {
 }
 
 }
-return NULL; 
+return commandArr; 
 }
 
-/**
+
 //p1 is type char*
 // *p1 is type char tho.....
 //maybe u want to  just assign p1 an 
@@ -143,23 +167,30 @@ return NULL;
 
 
 //char* word = malloc(sizeof(char) * wordLENGTH
-return NULL;
+//return NULL;
 
-}
+//}
 
-
+/**
 char* parse_helper(char* word, int totalChar) {
+
 char* argArr = malloc(sizeof(char) * totalChar); 
-
+int index = 0; 
 for (char* p = word; *p !=  '\0'; p++) {
-	if (*p == '&') {
-		inWord = 0; 
-	if (*p == ' ') {
-		
-
-inWord = 1; 
-		
-
+	if (*p != ' ' && *p != '&') {
+		argArr[index] = *p; 
+		index++; 
+	}else if (*p == ' ') {
+		index++; 
+		argArr[index] = '\0'; 
+		return argArr; 
+	}
+}
+index++; 
+argArr[index] = '\0'; 
+return argArr; 
+}
+*/
 
 
 //allocate top-level command array
@@ -168,7 +199,7 @@ inWord = 1;
 //copy word into the space, save it in command array  
 //return NULL;
 //}
-*/
+
 
 
 /**
