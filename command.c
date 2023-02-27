@@ -94,9 +94,8 @@ int inWord = 0;
 *foreground = 1; //1 when no ampersand;  
 int count = 0; 
 int charCount = 0; 
-//char* last = line;  
+
 for (char* p = line; *p != '\0'; p++) {
-//last = p; 
 
 if (*p == '&') {
 	if (*foreground == 0) { //it will be 0 if & already appeared 
@@ -133,26 +132,6 @@ if (inWord == 1) {
 	count++;                          
 }
 
-//printf("%d", count); 
-//printf("\n"); 
-//printf("%d", charCount); 
-//save the last p memory position, subtract that from the og position to find out length of array
-
-//create a char** of that length 
-
-
-
-//call helper method and pass in line (and it'll keep  cutting itself) so pass in p1
-
-//malloc the size of ALL the characters
-//add it to this array
-//return pointer to the first
-
-
-
-//every time there is a character, add it to this array
-//
-
 inWord = 0; 
 char** commandArr = malloc(sizeof(char*) * count+1);
 char** p = commandArr; //it seems like we need this pointer but im a little confused as to 
@@ -173,52 +152,10 @@ if (*p1 == '&') {
 }
 
 }
+p+=1; 
+*p = NULL; 
 return commandArr; 
 }
-
-
-//p1 is type char*
-// *p1 is type char tho.....
-//maybe u want to  just assign p1 an 
-//idk ? 
-
-
-//char* word = malloc(sizeof(char) * wordLENGTH
-//return NULL;
-
-//}
-
-/**
-char* parse_helper(char* word, int totalChar) {
-
-char* argArr = malloc(sizeof(char) * totalChar); 
-int index = 0; 
-for (char* p = word; *p !=  '\0'; p++) {
-	if (*p != ' ' && *p != '&') {
-		argArr[index] = *p; 
-		index++; 
-	}else if (*p == ' ') {
-		index++; 
-		argArr[index] = '\0'; 
-		return argArr; 
-	}
-}
-index++; 
-argArr[index] = '\0'; 
-return argArr; 
-}
-*/
-
-
-//allocate top-level command array
-
-//for each word, allocate space to hold word as null terminated string, 
-//copy word into the space, save it in command array  
-//return NULL;
-//}
-
-
-
 /**
  * command_show:
  *
