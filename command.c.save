@@ -11,51 +11,6 @@
 #include <stdio.h>
 #include "command.h"
 
-
-
-/**
-* parse_helper:
-*
-*/
-char* parse_helper(char* word, int totalChar) {
-
-//Malloc argArr space to fit word
-char* argArr = malloc(sizeof(char) * totalChar); 
-
-//Set index to zero
-int index = 0; 
-
-//Iterate through word chars
-for (char* p = word; *p !=  '\0'; p++) {
-
-	//If char not space or ampersand
-        if (*p != ' ' && *p != '&') {
-		
-		//Add character to index
-		//Increment index by one
-                argArr[index] = *p; 
-                index++; 
-
-	//If the char is a space
-        } else if (*p == ' ') {
-
-		//Increment index by one
-		//Add null terminator, then return argArr
-                index++; 
-                argArr[index] = '\0'; 
-                return argArr; 
-        }
-}
-
-//Increment index by one
-//Add null terminator, then return argArr
-index++; 
-argArr[index] = '\0'; 
-return argArr; 
-}
-
-
-
 /**
  * command_parse:
  *
@@ -82,142 +37,31 @@ return argArr;
  * - NULL if given a command-line string with invalid placement of '&'
  */
 char** command_parse(char* line, int* foreground) {
+  // Check arguments: must be non-NULL pointers.
+  assert(line);
+  assert(foreground);
 
-// Check arguments: must be non-NULL pointers.
-assert(line);
-assert(foreground);
+  // IMPLEMENT ME
+for (char* p = line; p != '\0'; p++) {
 
+	int count = 0;
+//Encounter non-space increment counter
+
+//if (*p == ' ') {
+//	p
+}
 
 //count number words in line and detect use of &
 //return null for invalid commands
-int inWord = 0; 
-*foreground = 1; //1 when no ampersand;  
-int count = 0; 
-int charCount = 0; 
-//char* last = line;  
-for (char* p = line; *p != '\0'; p++) {
-//last = p; 
-
-if (*p == '&') {
-	if (*foreground == 0) { //it will be 0 if & already appeared 
-		return NULL; 
-	} else {
-		if (inWord == 1) {
-			count++; 
-		}
-		*foreground = 0; 
-		inWord = 0; 		
-	}
-} else if (*p != ' ') {
-	inWord = 1;
-	charCount++;  
-} else if (*p  == ' ' ) {
-	if (inWord == 1) {
-		count++; 
-		inWord = 0; 
-	} else {
-		inWord = 0; 
-	}
-}
-}
-
-
-if (*foreground == 0) {
-	if (inWord == 1) {
-		return NULL; 
-	}
-}
-
-
-if (inWord == 1) {
-	count++;                          
-}
-
-//printf("%d", count); 
-//printf("\n"); 
-//printf("%d", charCount); 
-//save the last p memory position, subtract that from the og position to find out length of array
-
-//create a char** of that length 
-
-
-
-//call helper method and pass in line (and it'll keep  cutting itself) so pass in p1
-
-//malloc the size of ALL the characters
-//add it to this array
-//return pointer to the first
-
-
-
-//every time there is a character, add it to this array
-//
-
-inWord = 0; 
-char** commandArr = malloc(sizeof(char*) * count+1);
-char** p = commandArr; //it seems like we need this pointer but im a little confused as to 
-//why we cant just commandArr++ instead lol 
-
-for (char* p1 = line; *p1 != '\0'; p1++) { 
-if (*p1 == '&') {
-	inWord = 0;         
-} else if (*p1 != ' ') {
-        if (inWord == 0) {
-		*p = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
-				//because *commandArr type is char* aka str 
-                inWord = 1;
-		p += 1; 
-        }
-} else if (*p1  == ' ' ) {
-        inWord = 0;
-}
-
-}
-return commandArr; 
-}
-
-
-//p1 is type char*
-// *p1 is type char tho.....
-//maybe u want to  just assign p1 an 
-//idk ? 
-
-
-//char* word = malloc(sizeof(char) * wordLENGTH
-//return NULL;
-
-//}
-
-/**
-char* parse_helper(char* word, int totalChar) {
-
-char* argArr = malloc(sizeof(char) * totalChar); 
-int index = 0; 
-for (char* p = word; *p !=  '\0'; p++) {
-	if (*p != ' ' && *p != '&') {
-		argArr[index] = *p; 
-		index++; 
-	}else if (*p == ' ') {
-		index++; 
-		argArr[index] = '\0'; 
-		return argArr; 
-	}
-}
-index++; 
-argArr[index] = '\0'; 
-return argArr; 
-}
-*/
-
+//mark foreground/background status for valid commands
 
 //allocate top-level command array
 
 //for each word, allocate space to hold word as null terminated string, 
-//copy word into the space, save it in command array  
-//return NULL;
-//}
-
-
+//copy word into the space, save it in command array
+  
+return NULL;
+}
 
 /**
  * command_show:
