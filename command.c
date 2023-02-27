@@ -111,11 +111,9 @@ if (inWord == 1) {
 	count++;                          
 }
 
-printf("%d", count); 
-printf("\n"); 
-printf("%d", charCount); 
-//printf("%li", &line-((&last)+1)); 
-
+//printf("%d", count); 
+//printf("\n"); 
+//printf("%d", charCount); 
 //save the last p memory position, subtract that from the og position to find out length of array
 
 //create a char** of that length 
@@ -135,24 +133,21 @@ printf("%d", charCount);
 
 inWord = 0; 
 char** commandArr = malloc(sizeof(char*) * count+1);
-int wordNumber = 0; 
-//int letterNumber = 0; 
+char** p = commandArr; //it seems like we need this pointer but im a little confused as to 
+//why we cant just commandArr++ instead lol 
+
 for (char* p1 = line; *p1 != '\0'; p1++) { 
 if (*p1 == '&') {
 	inWord = 0;         
 } else if (*p1 != ' ') {
-	//commandArr[wordNumber][letterNumber] = *p1; //cannot access memory at commandArr[0][0]
-//bcuz theres no space to hold the array of letters itself 
         if (inWord == 0) {
-		commandArr[wordNumber] = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
+		*p = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
 				//because *commandArr type is char* aka str 
                 inWord = 1;
-		wordNumber++; 		
+		p += 1; 
         }
-	//letterNumber++; 
 } else if (*p1  == ' ' ) {
         inWord = 0;
-	//letterNumber = 0;          
 }
 
 }
