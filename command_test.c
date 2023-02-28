@@ -57,10 +57,13 @@ static char* COMMAND_LINES[] = {
   "Hello world!  Please parse    me.", //valid ?? i think?
   " & this is invalid", //invalid
   "YOUR COMMAND LINE HERE",
-"nano proj2/command.c &",//valid 
+
+//these 4 below fail 
+"nano proj2/command.c ",//valid 
 "      ls -l fcs-labs", //valid
 "  ls       -l   fcs-labs    ",
 "ls -l   fcs-labs      ",
+
 "nano&",
 "   nano&  ", //valid
 "nano &", //valid

@@ -19,38 +19,48 @@
 */
 char* parse_helper(char* word, int totalChar) {
 
-//Malloc argArr space to fit word
-char* argArr = malloc(sizeof(char) * totalChar); 
 
-//Set index to zero
-int index = 0; 
+int charCount = 0; 
+for (char* p = word; *p !=  ' '; p++) {
+	if (*p == '\0') {
+		break; 
+ }
+       //If char not space or ampersand
+        if (*p != '&') {           
+                charCount+=1; 
+	}
+}
+//printf(%d, charCount); 
+char* argArr = malloc(sizeof(char) * charCount + 1); 
+
+char* p1 = argArr; 
 
 //Iterate through word chars
-for (char* p = word; *p !=  '\0'; p++) {
-
+for (char*p = word; *p !=  ' '; p++) {
+ if (*p == '\0') {
+                break; 
+}
 	//If char not space or ampersand
-        if (*p != ' ' && *p != '&') {
-		
-		//Add character to index
-		//Increment index by one
-                argArr[index] = *p; 
-                index++; 
+        if (*p != '&') {		
+                *p1 = *p; 
+                p1++; 
+	}
 
 	//If the char is a space
-        } else if (*p == ' ') {
+        //} else if (*p == ' ') {
 
 		//Increment index by one
 		//Add null terminator, then return argArr
-                index++; 
-                argArr[index] = '\0'; 
-                return argArr; 
-        }
+          //      index++; 
+            //    argArr[index] = '\0'; 
+              //  return argArr; 
+//        }
 }
 
 //Increment index by one
 //Add null terminator, then return argArr
-index++; 
-argArr[index] = '\0'; 
+//p1++; 
+*p1 = '\0'; 
 return argArr; 
 }
 
@@ -92,6 +102,7 @@ assert(foreground);
 //return null for invalid commands
 int inWord = 0; 
 *foreground = 1; //1 when no ampersand;  
+
 int count = 0; 
 int charCount = 0; 
 
@@ -132,10 +143,21 @@ if (inWord == 1) {
 	count++;                          
 }
 
+printf("\n this is teh count: %d \n", count);
 inWord = 0; 
 char** commandArr = malloc(sizeof(char*) * count+1);
+
 char** p = commandArr; //it seems like we need this pointer but im a little confused as to 
+
 //why we cant just commandArr++ instead lol 
+
+//int iter = 0; 
+//while (iter < count) {
+	//looop to count number of characters in word
+	//break the loop and 
+	//give char counter and the other pointer at start of the word
+
+
 
 for (char* p1 = line; *p1 != '\0'; p1++) { 
 if (*p1 == '&') {
@@ -144,7 +166,8 @@ if (*p1 == '&') {
         if (inWord == 0) {
 		*p = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
 				//because *commandArr type is char* aka str 
-                inWord = 1;
+	printf("%s\n", *p);               
+	inWord = 1;
 		p += 1; 
         }
 } else if (*p1  == ' ' ) {
@@ -152,7 +175,7 @@ if (*p1 == '&') {
 }
 
 }
-p+=1; 
+//p+=1; 
 *p = NULL; 
 return commandArr; 
 }
@@ -243,7 +266,12 @@ void command_free(char** command) {
   // Check argument: must be non-NULL pointer.
   assert(command);
 
-  // IMPLEMENT ME
+ // IMPLEMENT ME
+for (char** p = command; *p; p++) {	
+//printf("%s\n", *p); 
+free(*p); 
+}//
 
+	free(command); 
 }
 
