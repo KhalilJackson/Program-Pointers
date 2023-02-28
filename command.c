@@ -154,7 +154,7 @@ char** p = commandArr; //it seems like we need this pointer but im a little conf
 //int iter = 0; 
 //while (iter < count) {
 	//looop to count number of characters in word
-	//break the loop and 
+//gi	//break the loop and 
 	//give char counter and the other pointer at start of the word
 
 
