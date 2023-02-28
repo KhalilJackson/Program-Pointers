@@ -23,17 +23,21 @@
  * (not command array tests) in COMMAND_LINES.
  */
 static char* NANO_CMD[] = { "nano", "foo.c", NULL };
-static char* NANO_SPACE_CMD[] = {"nano  ", "foo.c	", "broccoli ", NULL};
+static char* NANO_AMP_CMD[] = {"nano & ",  "foo.c\n", "broccoli ", "&", NULL};
+static char* NANO_NEWLINE_CMD[] = {"nano  ", "foo.c\n", "broccoli ", NULL};
 static char* GCC_CMD[] = { "gcc", "-Wall", "-o", "foo", "foo.c", NULL };
 static char* YOUR_CMD[] = { "YOUR", "COMMAND", "ARRAY", "HERE", NULL };
 static char* LS_CMD[] = {"ls", "-l" "fcs-labs", NULL};
+static char* LS_QUOTES_CMD[] = {"ls", "-l" "fcs-labs "" ","""", NULL};
 
 static char** COMMAND_ARRAYS[] = {
   NANO_CMD,
-  NANO_SPACE_CMD,
+  NANO_AMP_CMD, 
+  NANO_NEWLINE_CMD,
   GCC_CMD,
   YOUR_CMD,
-  LS_CMD
+  LS_CMD, 
+  LS_QUOTES_CMD
 };
 
 /*
@@ -57,6 +61,7 @@ static char* COMMAND_LINES[] = {
   "YOUR COMMAND LINE HERE",
   "nano proj2/command.c ",
   "nano \n proj2.c", 
+  "nano "" proj5   ", 
   "      ls -l fcs-labs",
   "  ls       -l   fcs-labs    ",
   "ls -l   fcs-labs      ",

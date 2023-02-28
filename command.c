@@ -11,8 +11,6 @@
 #include <stdio.h>
 #include "command.h"
 
-
-
 /**
 * parse_helper:
 * Counts the number of characters in a word, and then loops 
@@ -68,8 +66,6 @@ for (char*p = word; *p !=  ' '; p++) {
 //return base pointer
 return argArr; 
 }
-
-
 
 /**
  * command_parse:
@@ -166,7 +162,7 @@ char** pCommandArr = commandArr;
 for (char* p = line; *p; p++) { 
 if (*p == '&' || *p == ' ') {
 	inWord = 0;         
-} else if (*p != ' ') {
+} else if ((*p != ' ') & (*p != '\n')) {
 	//if *p is a non-space char, and inWord == 0, it means
 	// that *p is first letter of a word 
         if (inWord == 0) {
@@ -207,7 +203,6 @@ printf("_");
 printf("\n");
 }
 
-
 /**
  * command_print:
  *
@@ -223,12 +218,17 @@ void command_print(char** command) {
 // Check argument: must be non-NULL pointer.
 assert(command);
 
-for (char** p = command; *p != NULL; p+=1) {
-	printf (*p); 
-	printf(" "); 
+for (char** p = command; *p != NULL; p++) {
+	char* pChar = (char*)*p; 	
+	while (*pChar) {
+		if ((*pChar != ' ') & (*pChar != '"') & (*pChar!= '&') & (*pChar != '\n')) {
+			printf ("%c", *pChar); 
+		} 
+		pChar++; 
+	}
+	printf("%c",' '); 
 }
 }
-
 
 /**
  * command_free:
