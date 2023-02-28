@@ -220,12 +220,14 @@ assert(command);
 
 for (char** p = command; *p != NULL; p++) {
 	char* pChar = (char*)*p; 	
+	//while loop checks each chara and prints if they are not ampersand, quote, space, or newline
 	while (*pChar) {
 		if ((*pChar != ' ') & (*pChar != '"') & (*pChar!= '&') & (*pChar != '\n')) {
 			printf ("%c", *pChar); 
 		} 
 		pChar++; 
 	}
+	//there should be only one space between each command word
 	printf("%c",' '); 
 }
 }
