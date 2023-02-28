@@ -15,52 +15,57 @@
 
 /**
 * parse_helper:
+* Counts the number of characters in a word, and then loops 
+* through the argument character by character, to create a pointer to an array of characters (a string) 
+* that is the first word in the argument. This will then be used by commmand_parser since an elemnet in command**
+* will point to this char* string. 
 *
+* Parameter:
+* word - line passed in parser method but starting from the 
+* the word that will be stored in returned char*   
+* Return: 
+* -  pointer to char* string containing one word from the command
 */
-char* parse_helper(char* word, int totalChar) {
+char* parse_helper(char* word) {
+int charCount = 0; //character count for a single word the line
 
-
-int charCount = 0; 
 for (char* p = word; *p !=  ' '; p++) {
-	if (*p == '\0') {
+	//word might end with null terminator instead of space
+	if (*p == '\0') { 
 		break; 
  }
-       //If char not space or ampersand
+       //count all characters except ampersand
+	//since they will not appear in command array
         if (*p != '&') {           
                 charCount+=1; 
 	}
 }
-//printf(%d, charCount); 
+
+//need space to hold all characters in word and \0
 char* argArr = malloc(sizeof(char) * charCount + 1); 
 
-char* p1 = argArr; 
+//pointer to elements in argArr containing each char in a word
+char* pArgArr = argArr; 
 
-//Iterate through word chars
+//loop through each char in line passed in as arg
 for (char*p = word; *p !=  ' '; p++) {
- if (*p == '\0') {
+ 	if (*p == '\0') {
                 break; 
-}
-	//If char not space or ampersand
-        if (*p != '&') {		
-                *p1 = *p; 
-                p1++; 
 	}
 
-	//If the char is a space
-        //} else if (*p == ' ') {
+	//don't include & in arr
+        if (*p != '&') {		
+		//have pointer store pointer to char in word
+		 *pArgArr = *p; 
 
-		//Increment index by one
-		//Add null terminator, then return argArr
-          //      index++; 
-            //    argArr[index] = '\0'; 
-              //  return argArr; 
-//        }
+		//increment pointer so that new pointer is reference to next char in word                
+		pArgArr++; 
+	}
 }
+//Add null terminator
+*pArgArr = '\0'; 
 
-//Increment index by one
-//Add null terminator, then return argArr
-//p1++; 
-*p1 = '\0'; 
+//return base pointer
 return argArr; 
 }
 
@@ -97,119 +102,104 @@ char** command_parse(char* line, int* foreground) {
 assert(line);
 assert(foreground);
 
-
-//count number words in line and detect use of &
-//return null for invalid commands
+//boolean value (if char* in loop is a reference to a character part of a word, it is 1)
 int inWord = 0; 
+
 *foreground = 1; //1 when no ampersand;  
 
-int count = 0; 
-int charCount = 0; 
+int wordCount = 0; 
 
-for (char* p = line; *p != '\0'; p++) {
-
+//loop counts number words in line and detects use of &
+//returns null for invalid commands
+for (char* p = line; *p; p++) {
 if (*p == '&') {
-	if (*foreground == 0) { //it will be 0 if & already appeared 
+	//if & has already appeared, *foregaround = 0, and 
+	//more than one & is invalid
+	if (*foreground == 0) {  
 		return NULL; 
 	} else {
+		//when & appears after a word with no space in between
 		if (inWord == 1) {
-			count++; 
+			wordCount++; 
 		}
+		//sets *foreground to 0 since & character indicates background command
 		*foreground = 0; 
+		
+		//& indicates end of a word
 		inWord = 0; 		
 	}
 } else if (*p != ' ') {
 	inWord = 1;
-	charCount++;  
 } else if (*p  == ' ' ) {
+	//when previous char was part of word, and this char is a space
+	//indicates that it is the end of a word, and wordCount incremented
 	if (inWord == 1) {
-		count++; 
-		inWord = 0; 
-	} else {
-		inWord = 0; 
+		wordCount++; 
 	}
+	inWord = 0; 
 }
 }
 
-
+//no word can appear after an &
 if (*foreground == 0) {
 	if (inWord == 1) {
 		return NULL; 
 	}
 }
 
-
+//since wordCount incremented when there is a space in loop
+//if word ends with something else, inWord still is 1, wordCount must still be incremneted
 if (inWord == 1) {
-	count++;                          
+	wordCount++;                          
 }
 
-printf("\n this is teh count: %d \n", count);
+//resets inWord
 inWord = 0; 
-char** commandArr = malloc(sizeof(char*) * count+1);
 
-char** p = commandArr; //it seems like we need this pointer but im a little confused as to 
+//initialises top level array
+char** commandArr = malloc(sizeof(char*) * wordCount+1);
 
-//why we cant just commandArr++ instead lol 
+//pointer to commandArr
+char** pCommandArr = commandArr;  
 
-//int iter = 0; 
-//while (iter < count) {
-	//looop to count number of characters in word
-//gi	//break the loop and 
-	//give char counter and the other pointer at start of the word
-
-
-
-for (char* p1 = line; *p1 != '\0'; p1++) { 
-if (*p1 == '&') {
+//loops through characters in line with pointer p
+for (char* p = line; *p; p++) { 
+if (*p == '&' || *p == ' ') {
 	inWord = 0;         
-} else if (*p1 != ' ') {
+} else if (*p != ' ') {
+	//if *p is a non-space char, and inWord == 0, it means
+	// that *p is first letter of a word 
         if (inWord == 0) {
-		*p = parse_helper(p1, charCount); //parse_helper(p1, charCount) ; // so *commandArr is "world! please parse..
-				//because *commandArr type is char* aka str 
-	printf("%s\n", *p);               
-	inWord = 1;
-		p += 1; 
+		// *pCommandArr is a pointer to a single word (single element in commandArr) 
+		*pCommandArr = parse_helper(p);  
+		inWord = 1;
+		//increments pointer so that next word can be added to commandArr
+		pCommandArr += 1; 
         }
-} else if (*p1  == ' ' ) {
-        inWord = 0;
 }
-
 }
-//p+=1; 
-*p = NULL; 
+*pCommandArr = NULL; 
 return commandArr; 
 }
+
 /**
  * command_show:
  *
- * Print the structure of a command array.
- *
+ * Print the structure of a command array. Prints strings that command array holds and in between each 
+ * string is a '_'. _ indicates start and end of element, clearly delineates word boundaries of command array and 
+ * makes it easy to see if there is a space before the last _ (which indicates 
+ * that the element has a trailing space, and therefore invalid. 
  * Parameters:
- *
  * - command: a non-NULL pointer to the command array to print.
  *
-
- A variation on command_print intended for use while debugging.
- The output should make it clear what strings the command array holds, but
- the exact format is up to you (as opposed to command_print, 
-where the format is prescribed). For example, you might choose
- to print each word of the command array on separate lines to clearly delineate 
-the word boundaries. Make sure that the output lets you distinguish correct words 
-from incorrect words. For example, your output should let you distinguish 
-the valid, isolated word "ls" versus the string "ls  " that has trailing spaces 
-in the string and therefore is not a valid word.
-
-
 */
 void command_show(char** command) {
-  // Check argument: must be non-NULL pointer.
-  assert(command);
+// Check argument: must be non-NULL pointer.
+assert(command);
 
-// _ indicates start and end of elmenet
-// _ clearly delineates word boundaries of command array
-// _ makes it easy to see if there is a space before the last _ (which indicates 
-//that the element has a trailing space, and therefore invalid. 
-for (char** p = command; *p != NULL; p+=1) {
+//p is pointer to each element in command arra
+//loops and prints every string in command array
+for (char** p = command; *p; p+=1) {
 	printf("_"); 
 	printf(*p); 
 }
@@ -226,25 +216,12 @@ printf("\n");
  *
  * Parameters:
  *
-
-array:
-{ "gcc", "-Wall", "-o", "foo", "foo.c", NULL };
-
-desired output: 
- gcc -Wall -o foo foo.c
-
-
  * - command: non-NULL pointer to the command array to print.
+ */
  
-Print a command array in the form of a command line, 
-with the command words separated by single spaces. 
-It is fine if there is a space after the final word. 
-However, do not include quotes, ampersands (for background commands), or newline characters ('\n'). 
-You should use the printf function here.*/
-
 void command_print(char** command) {
-  // Check argument: must be non-NULL pointer.
-  assert(command);
+// Check argument: must be non-NULL pointer.
+assert(command);
 
 for (char** p = command; *p != NULL; p+=1) {
 	printf (*p); 
@@ -263,15 +240,13 @@ for (char** p = command; *p != NULL; p+=1) {
  * - command: non-NULL pointer to the command array to free.
  */
 void command_free(char** command) {
-  // Check argument: must be non-NULL pointer.
-  assert(command);
+// Check argument: must be non-NULL pointer.
+assert(command);
 
- // IMPLEMENT ME
+//frees each char* that command array references
 for (char** p = command; *p; p++) {	
-//printf("%s\n", *p); 
-free(*p); 
-}//
-
-	free(command); 
+	free(*p); 
+}
+free(command); 
 }
 

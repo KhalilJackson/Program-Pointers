@@ -28,8 +28,6 @@ static char* GCC_CMD[] = { "gcc", "-Wall", "-o", "foo", "foo.c", NULL };
 static char* YOUR_CMD[] = { "YOUR", "COMMAND", "ARRAY", "HERE", NULL };
 static char* LS_CMD[] = {"ls", "-l" "fcs-labs", NULL};
 
-
-
 static char** COMMAND_ARRAYS[] = {
   NANO_CMD,
   NANO_SPACE_CMD,
@@ -54,26 +52,23 @@ by 0 or more spaces
 
 */
 static char* COMMAND_LINES[] = {
-  "Hello world!  Please parse    me.", //valid ?? i think?
-  " & this is invalid", //invalid
+  "Hello world!  Please parse    me.", 
+  " & this is invalid", 
   "YOUR COMMAND LINE HERE",
-
-//these 4 below fail 
-"nano proj2/command.c ",//valid 
-"      ls -l fcs-labs", //valid
-"  ls       -l   fcs-labs    ",
-"ls -l   fcs-labs      ",
-
-"nano&",
-"   nano&  ", //valid
-"nano &", //valid
-
-"&uhoh", //invalid
-" &   uh oh", //invalid
-"uh oh & &", //invalid
-"uh & oh", //invalid
-"u&h oh" //invalid
-
+  "nano proj2/command.c ",
+  "nano \n proj2.c", 
+  "      ls -l fcs-labs",
+  "  ls       -l   fcs-labs    ",
+  "ls -l   fcs-labs      ",
+  "nano&",
+  "   nano&  ",
+  "nano &", 
+  "&uhoh",
+  " &   uh oh",
+  "uh oh & &", 
+  "uh & & oh", 
+  "uh & oh", 
+  "u&h oh" 
 };
 
 
