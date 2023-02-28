@@ -1,7 +1,7 @@
 /**
  * Lab 2 - Program Pointers
  *
- * <YOUR NAME(S) HERE>
+ * <Diyaa Yaqub, Khalil Jackson>
  *
  * command.c - Source file with your parsing library implementation.
  *
