@@ -56,24 +56,34 @@ by 0 or more spaces
 
 */
 static char* COMMAND_LINES[] = {
-  "Hello world!  Please parse    me.", 
-  " & this is invalid", 
+  "Hello world!  Please parse    me.",
+  " & this is invalid",
   "YOUR COMMAND LINE HERE",
   "nano proj2/command.c ",
-  "nano \n proj2.c", 
-  "nano "" proj5   ", 
+  "nano \n proj2.c",
+  "nano "" proj5   ",
   "      ls -l fcs-labs",
   "  ls       -l   fcs-labs    ",
   "ls -l   fcs-labs      ",
   "nano&",
   "   nano&  ",
-  "nano &", 
+  "nano &",
   "&uhoh",
   " &   uh oh",
-  "uh oh & &", 
-  "uh & & oh", 
-  "uh & oh", 
-  "u&h oh" 
+  "uh oh & &",
+  "uh & & oh",
+  "uh & oh",
+  "u&h oh",
+  "-& and ls",
+  "-ls v &- vt",
+  "take - api && ck",
+  "-",
+  "&",
+  "     ------- -- -- -- -- ---- &",
+  "spam this -- -ls drop   .?>29po9& ",
+  "let's see if this works '\0'",
+  " ",
+  ""
 };
 
 
