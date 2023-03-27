@@ -1,0 +1,27 @@
+Functional correctness: 75 of 100 tests passed
+	(see correctness.txt for details)
+
+Memory issues: 664 Valgrind errors
+	(see memory.txt for details)
+
+Pointer style violations: 0
+	(see style.txt for details)
+
+Comments:
+
+-Some messy or missing indentation. Be absolutely strict! 
+-Your top-level command array allocation isn't allocating enough bytes: 
+
+	char** commandArr = malloc(sizeof(char*) * wordCount+1);
+
+Due to order of operations, you need to write this as
+
+	char** commandArr = malloc(sizeof(char*) * (wordCount + 1));
+
+to allocate the full 8 bytes for the NULL on the end.  This may be the primary reason for your memory errors.
+
+-A name like "parse_helper" doesn't reveal anything about what the function is doing. Something like "count_chars" would be clearer.
+
+-In command_print, inner loop is unnecessary -- just use printf with %s to print the string all at once rather than looping over printf calls with %c printing one char at a time.
+
+Score: 85/100

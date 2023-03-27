@@ -1,0 +1,4 @@
+gcc -Wall -g --std=c99 -DNDEBUG -c command.c
+gcc -Wall -g --std=c99 -DNDEBUG -o command_test command_test.c command.o
+gcc -Wall -g --std=c99 -DNDEBUG -Werror --std=gnu99 -o command_grade command_grade.c command.o command-solution.o
+gcc -Wall -g --std=c99 -DNDEBUG -Werror --std=gnu99 -o command_grade_single command_grade_single.c command.o command-solution.o

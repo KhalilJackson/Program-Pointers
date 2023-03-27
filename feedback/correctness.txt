@@ -1,0 +1,348 @@
+Running 100 tests
+Testing command "Hello world!  Please parse    me."
+[pass]
+
+Testing command "emacs"
+[pass]
+
+Testing command "emacs "
+[pass]
+
+Testing command " emacs"
+[pass]
+
+Testing command " emacs "
+[pass]
+
+Testing command "cat shell.c command.h Makefile"
+[pass]
+
+Testing command "   echo hello world"
+[pass]
+
+Testing command "   echo hello   world"
+[pass]
+
+Testing command "   echo   hello world"
+[pass]
+
+Testing command "   echo   hello   world"
+[pass]
+
+Testing command "   echo hello   world   "
+[pass]
+
+Testing command "echo   hello world  "
+[pass]
+
+Testing command ""
+[pass]
+
+Testing command "a"
+[pass]
+
+Testing command " a"
+[pass]
+
+Testing command "a "
+[pass]
+
+Testing command " a "
+[pass]
+
+Testing command "  a"
+[pass]
+
+Testing command "a  "
+[pass]
+
+Testing command " a  "
+[pass]
+
+Testing command "  a "
+[pass]
+
+Testing command "  a  "
+[pass]
+
+Testing command "a bc"
+[pass]
+
+Testing command " a bc"
+[pass]
+
+Testing command "a bc"
+[pass]
+
+Testing command " a bc"
+[pass]
+
+Testing command "  a bc"
+[pass]
+
+Testing command "a  bc"
+[pass]
+
+Testing command " a  bc"
+[pass]
+
+Testing command "  a bc"
+[pass]
+
+Testing command "  a  bc"
+[pass]
+
+Testing command "a bc  "
+[pass]
+
+Testing command " a bc  "
+[pass]
+
+Testing command "a bc  "
+[pass]
+
+Testing command " a bc  "
+[pass]
+
+Testing command "  a bc  "
+[pass]
+
+Testing command "a  bc  "
+[pass]
+
+Testing command " a  bc  "
+[pass]
+
+Testing command "  a bc  "
+[pass]
+
+Testing command "  a  bc  "
+[pass]
+
+Testing command "bc a"
+[pass]
+
+Testing command " bc a"
+[pass]
+
+Testing command "bc a"
+[pass]
+
+Testing command " bc a"
+[pass]
+
+Testing command "  bc a"
+[pass]
+
+Testing command "bc  a"
+[pass]
+
+Testing command " bc  a"
+[pass]
+
+Testing command "  bc a"
+[pass]
+
+Testing command "  bc  a"
+[pass]
+
+Testing command "bc a  "
+[pass]
+
+Testing command " bc a  "
+[pass]
+
+Testing command "bc a  "
+[pass]
+
+Testing command " bc a  "
+[pass]
+
+Testing command "  bc a  "
+[pass]
+
+Testing command "bc  a  "
+[pass]
+
+Testing command " bc  a  "
+[pass]
+
+Testing command "  bc a  "
+[pass]
+
+Testing command "  bc  a  "
+[pass]
+
+Testing command "a b"
+[pass]
+
+Testing command " a b"
+[pass]
+
+Testing command "a b "
+[pass]
+
+Testing command " a b "
+[pass]
+
+Testing command "  a  b  "
+[pass]
+
+Testing command "emacs &"
+[pass]
+
+Testing command "emacs&   "
+[pass]
+
+Testing command "sleep 10&"
+[pass]
+
+Testing command "sleep 10 &"
+[pass]
+
+Testing command "sleep 10  &"
+[pass]
+
+Testing command "sleep 10& "
+[pass]
+
+Testing command "sleep 10 & "
+[pass]
+
+Testing command "sleep 10  & "
+[pass]
+
+Testing command "sleep 10&   "
+[pass]
+
+Testing command "sleep 10 &   "
+[pass]
+
+Testing command "sleep 10  &   "
+[pass]
+
+Testing command "  a  b  &  "
+[pass]
+
+Testing command "&uhoh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "   &uhoh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "&uhoh   "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  &uhoh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  & uh oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  & uh oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  &   uh oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "uh&oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh& oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh & oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh&oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh& oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh & oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "  uh&oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  uh& oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  uh & oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "  uh &oh  "
+  Error: command status was set for invalid command
+  Error: returned non-NULL for invalid command
+[!] TEST FAILED
+
+Testing command "uh& &oh"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh&&"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &&"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh & &"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &  &"
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Testing command "uh oh &  &  "
+  Error: command status was set for invalid command
+[!] TEST FAILED
+
+Summary: all tests..........75 passed / 100 done / 100 total
+  Valid foreground tests....63 passed / 63 done / 63 total
+  Valid background tests....12 passed / 12 done / 12 total
+  All invalid tests.........0 passed / 25 done / 25 total
+Summary: all errors.........33
+  Command validity errors...8
+  Command status errors.....25
+  Command malloc errors.....0
+  Command length errors.....0 (+0 due to '&')
+  Command word errors.......0 (+0 due to '&', 144 words expected)
+  Command ampersand errors..0
+  Test timeouts.............0
+  Test segfaults............0
+  Test aborts...............0

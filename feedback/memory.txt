@@ -1,0 +1,1332 @@
+==2348177== Memcheck, a memory error detector
+==2348177== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2348177== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==2348177== Command: ./command_test
+==2348177== 
+Setting timeout for 10 seconds
+Running 100 tests with static sources
+Test 0
+Parsing: "Hello world!  Please parse    me."
+==2348177== Invalid write of size 8
+==2348177==    at 0x4016D2: command_parse (command.c:181)
+==2348177==    by 0x40127D: test_all (command_test.c:138)
+==2348177==    by 0x401410: main (command_test.c:172)
+==2348177==  Address 0x4a6c068 is 40 bytes inside a block of size 41 alloc'd
+==2348177==    at 0x484486F: malloc (vg_replace_malloc.c:381)
+==2348177==    by 0x401645: command_parse (command.c:161)
+==2348177==    by 0x40127D: test_all (command_test.c:138)
+==2348177==    by 0x401410: main (command_test.c:172)
+==2348177== 
+Parsed foreground command:
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x401722: command_show (command.c:203)
+==2348177==    by 0x4012F7: test_all (command_test.c:145)
+==2348177==    by 0x401410: main (command_test.c:172)
+==2348177== 
+As command line: 
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x4017DE: command_print (command.c:225)
+==2348177==    by 0x401321: test_all (command_test.c:147)
+==2348177==    by 0x401410: main (command_test.c:172)
+==2348177== 
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x40181C: command_free (command.c:254)
+==2348177==    by 0x401337: test_all (command_test.c:149)
+==2348177==    by 0x401410: main (command_test.c:172)
+==2348177== 
+Test 1
+Parsing: "emacs"
+Parsed foreground command:
+As command line: 
+Test 2
+Parsing: "emacs "
+Parsed foreground command:
+As command line: 
+Test 3
+Parsing: " emacs"
+Parsed foreground command:
+As command line: 
+Test 4
+Parsing: " emacs "
+Parsed foreground command:
+As command line: 
+Test 5
+Parsing: "cat shell.c command.h Makefile"
+Parsed foreground command:
+As command line: 
+Test 6
+Parsing: "   echo hello world"
+Parsed foreground command:
+As command line: 
+Test 7
+Parsing: "   echo hello   world"
+Parsed foreground command:
+As command line: 
+Test 8
+Parsing: "   echo   hello world"
+Parsed foreground command:
+As command line: 
+Test 9
+Parsing: "   echo   hello   world"
+Parsed foreground command:
+As command line: 
+Test 10
+Parsing: "   echo hello   world   "
+Parsed foreground command:
+As command line: 
+Test 11
+Parsing: "echo   hello world  "
+Parsed foreground command:
+As command line: 
+Test 12
+Parsing: ""
+Parsed foreground command:
+As command line: 
+Test 13
+Parsing: "a"
+Parsed foreground command:
+As command line: 
+Test 14
+Parsing: " a"
+Parsed foreground command:
+As command line: 
+Test 15
+Parsing: "a "
+Parsed foreground command:
+As command line: 
+Test 16
+Parsing: " a "
+Parsed foreground command:
+As command line: 
+Test 17
+Parsing: "  a"
+Parsed foreground command:
+As command line: 
+Test 18
+Parsing: "a  "
+Parsed foreground command:
+As command line: 
+Test 19
+Parsing: " a  "
+Parsed foreground command:
+As command line: 
+Test 20
+Parsing: "  a "
+Parsed foreground command:
+As command line: 
+Test 21
+Parsing: "  a  "
+Parsed foreground command:
+As command line: 
+Test 22
+Parsing: "a bc"
+Parsed foreground command:
+As command line: 
+Test 23
+Parsing: " a bc"
+Parsed foreground command:
+As command line: 
+Test 24
+Parsing: "a bc"
+Parsed foreground command:
+As command line: 
+Test 25
+Parsing: " a bc"
+Parsed foreground command:
+As command line: 
+Test 26
+Parsing: "  a bc"
+Parsed foreground command:
+As command line: 
+Test 27
+Parsing: "a  bc"
+Parsed foreground command:
+As command line: 
+Test 28
+Parsing: " a  bc"
+Parsed foreground command:
+As command line: 
+Test 29
+Parsing: "  a bc"
+Parsed foreground command:
+As command line: 
+Test 30
+Parsing: "  a  bc"
+Parsed foreground command:
+As command line: 
+Test 31
+Parsing: "a bc  "
+Parsed foreground command:
+As command line: 
+Test 32
+Parsing: " a bc  "
+Parsed foreground command:
+As command line: 
+Test 33
+Parsing: "a bc  "
+Parsed foreground command:
+As command line: 
+Test 34
+Parsing: " a bc  "
+Parsed foreground command:
+As command line: 
+Test 35
+Parsing: "  a bc  "
+Parsed foreground command:
+As command line: 
+Test 36
+Parsing: "a  bc  "
+Parsed foreground command:
+As command line: 
+Test 37
+Parsing: " a  bc  "
+Parsed foreground command:
+As command line: 
+Test 38
+Parsing: "  a bc  "
+Parsed foreground command:
+As command line: 
+Test 39
+Parsing: "  a  bc  "
+Parsed foreground command:
+As command line: 
+Test 40
+Parsing: "bc a"
+Parsed foreground command:
+As command line: 
+Test 41
+Parsing: " bc a"
+Parsed foreground command:
+As command line: 
+Test 42
+Parsing: "bc a"
+Parsed foreground command:
+As command line: 
+Test 43
+Parsing: " bc a"
+Parsed foreground command:
+As command line: 
+Test 44
+Parsing: "  bc a"
+Parsed foreground command:
+As command line: 
+Test 45
+Parsing: "bc  a"
+Parsed foreground command:
+As command line: 
+Test 46
+Parsing: " bc  a"
+Parsed foreground command:
+As command line: 
+Test 47
+Parsing: "  bc a"
+Parsed foreground command:
+As command line: 
+Test 48
+Parsing: "  bc  a"
+Parsed foreground command:
+As command line: 
+Test 49
+Parsing: "bc a  "
+Parsed foreground command:
+As command line: 
+Test 50
+Parsing: " bc a  "
+Parsed foreground command:
+As command line: 
+Test 51
+Parsing: "bc a  "
+Parsed foreground command:
+As command line: 
+Test 52
+Parsing: " bc a  "
+Parsed foreground command:
+As command line: 
+Test 53
+Parsing: "  bc a  "
+Parsed foreground command:
+As command line: 
+Test 54
+Parsing: "bc  a  "
+Parsed foreground command:
+As command line: 
+Test 55
+Parsing: " bc  a  "
+Parsed foreground command:
+As command line: 
+Test 56
+Parsing: "  bc a  "
+Parsed foreground command:
+As command line: 
+Test 57
+Parsing: "  bc  a  "
+Parsed foreground command:
+As command line: 
+Test 58
+Parsing: "a b"
+Parsed foreground command:
+As command line: 
+Test 59
+Parsing: " a b"
+Parsed foreground command:
+As command line: 
+Test 60
+Parsing: "a b "
+Parsed foreground command:
+As command line: 
+Test 61
+Parsing: " a b "
+Parsed foreground command:
+As command line: 
+Test 62
+Parsing: "  a  b  "
+Parsed foreground command:
+As command line: 
+Test 63
+Parsing: "emacs &"
+Parsed background command:
+As command line: 
+Test 64
+Parsing: "emacs&   "
+Parsed background command:
+As command line: 
+Test 65
+Parsing: "sleep 10&"
+Parsed background command:
+As command line: 
+Test 66
+Parsing: "sleep 10 &"
+Parsed background command:
+As command line: 
+Test 67
+Parsing: "sleep 10  &"
+Parsed background command:
+As command line: 
+Test 68
+Parsing: "sleep 10& "
+Parsed background command:
+As command line: 
+Test 69
+Parsing: "sleep 10 & "
+Parsed background command:
+As command line: 
+Test 70
+Parsing: "sleep 10  & "
+Parsed background command:
+As command line: 
+Test 71
+Parsing: "sleep 10&   "
+Parsed background command:
+As command line: 
+Test 72
+Parsing: "sleep 10 &   "
+Parsed background command:
+As command line: 
+Test 73
+Parsing: "sleep 10  &   "
+Parsed background command:
+As command line: 
+Test 74
+Parsing: "  a  b  &  "
+Parsed background command:
+As command line: 
+Test 75
+Parsing: "&uhoh"
+Test 76
+Parsing: "   &uhoh"
+Test 77
+Parsing: "&uhoh   "
+Parsed background command:
+As command line: 
+Test 78
+Parsing: "  &uhoh  "
+Parsed background command:
+As command line: 
+Test 79
+Parsing: "  & uh oh"
+Test 80
+Parsing: "  & uh oh  "
+Parsed background command:
+As command line: 
+Test 81
+Parsing: "  &   uh oh  "
+Parsed background command:
+As command line: 
+Test 82
+Parsing: "uh&oh"
+Test 83
+Parsing: "uh& oh"
+Test 84
+Parsing: "uh & oh"
+Test 85
+Parsing: "uh &oh"
+Test 86
+Parsing: "  uh&oh"
+Test 87
+Parsing: "  uh& oh"
+Test 88
+Parsing: "  uh & oh"
+Test 89
+Parsing: "  uh &oh"
+Test 90
+Parsing: "  uh&oh  "
+Parsed background command:
+As command line: 
+Test 91
+Parsing: "  uh& oh  "
+Parsed background command:
+As command line: 
+Test 92
+Parsing: "  uh & oh  "
+Parsed background command:
+As command line: 
+Test 93
+Parsing: "  uh &oh  "
+Parsed background command:
+As command line: 
+Test 94
+Parsing: "uh& &oh"
+Test 95
+Parsing: "uh oh&&"
+Test 96
+Parsing: "uh oh &&"
+Test 97
+Parsing: "uh oh & &"
+Test 98
+Parsing: "uh oh &  &"
+Test 99
+Parsing: "uh oh &  &  "
+Running 100 tests with heap sources
+Test 0
+Parsing: "Hello world!  Please parse    me."
+==2348177== Invalid write of size 8
+==2348177==    at 0x4016D2: command_parse (command.c:181)
+==2348177==    by 0x40127D: test_all (command_test.c:138)
+==2348177==    by 0x401481: main (command_test.c:179)
+==2348177==  Address 0x4a72098 is 40 bytes inside a block of size 41 alloc'd
+==2348177==    at 0x484486F: malloc (vg_replace_malloc.c:381)
+==2348177==    by 0x401645: command_parse (command.c:161)
+==2348177==    by 0x40127D: test_all (command_test.c:138)
+==2348177==    by 0x401481: main (command_test.c:179)
+==2348177== 
+Parsed foreground command:
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x401722: command_show (command.c:203)
+==2348177==    by 0x4012F7: test_all (command_test.c:145)
+==2348177==    by 0x401481: main (command_test.c:179)
+==2348177== 
+As command line: 
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x4017DE: command_print (command.c:225)
+==2348177==    by 0x401321: test_all (command_test.c:147)
+==2348177==    by 0x401481: main (command_test.c:179)
+==2348177== 
+==2348177== Conditional jump or move depends on uninitialised value(s)
+==2348177==    at 0x40181C: command_free (command.c:254)
+==2348177==    by 0x401337: test_all (command_test.c:149)
+==2348177==    by 0x401481: main (command_test.c:179)
+==2348177== 
+Test 1
+Parsing: "emacs"
+Parsed foreground command:
+As command line: 
+Test 2
+Parsing: "emacs "
+Parsed foreground command:
+As command line: 
+Test 3
+Parsing: " emacs"
+Parsed foreground command:
+As command line: 
+Test 4
+Parsing: " emacs "
+Parsed foreground command:
+As command line: 
+Test 5
+Parsing: "cat shell.c command.h Makefile"
+Parsed foreground command:
+As command line: 
+Test 6
+Parsing: "   echo hello world"
+Parsed foreground command:
+As command line: 
+Test 7
+Parsing: "   echo hello   world"
+Parsed foreground command:
+As command line: 
+Test 8
+Parsing: "   echo   hello world"
+Parsed foreground command:
+As command line: 
+Test 9
+Parsing: "   echo   hello   world"
+Parsed foreground command:
+As command line: 
+Test 10
+Parsing: "   echo hello   world   "
+Parsed foreground command:
+As command line: 
+Test 11
+Parsing: "echo   hello world  "
+Parsed foreground command:
+As command line: 
+Test 12
+Parsing: ""
+Parsed foreground command:
+As command line: 
+Test 13
+Parsing: "a"
+Parsed foreground command:
+As command line: 
+Test 14
+Parsing: " a"
+Parsed foreground command:
+_Hello_world!_Please_parse_me._
+Hello world! Please parse me. 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_cat_shell.c_command.h_Makefile_
+cat shell.c command.h Makefile 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_
+
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+Invalid command.
+Invalid command.
+_uhoh_
+uhoh 
+Freed command array.
+_uhoh_
+uhoh 
+Freed command array.
+Invalid command.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+_uhoh_oh_
+uhoh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+_Hello_world!_Please_parse_me._
+Hello world! Please parse me. 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_cat_shell.c_command.h_Makefile_
+cat shell.c command.h Makefile 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_echo_hello_world_
+echo hello world 
+Freed command array.
+_
+
+Freed command array.
+_a_
+a 
+Freed command array.
+_As command line: 
+Test 15
+Parsing: "a "
+Parsed foreground command:
+As command line: 
+Test 16
+Parsing: " a "
+Parsed foreground command:
+As command line: 
+Test 17
+Parsing: "  a"
+Parsed foreground command:
+As command line: 
+Test 18
+Parsing: "a  "
+Parsed foreground command:
+As command line: 
+Test 19
+Parsing: " a  "
+Parsed foreground command:
+As command line: 
+Test 20
+Parsing: "  a "
+Parsed foreground command:
+As command line: 
+Test 21
+Parsing: "  a  "
+Parsed foreground command:
+As command line: 
+Test 22
+Parsing: "a bc"
+Parsed foreground command:
+As command line: 
+Test 23
+Parsing: " a bc"
+Parsed foreground command:
+As command line: 
+Test 24
+Parsing: "a bc"
+Parsed foreground command:
+As command line: 
+Test 25
+Parsing: " a bc"
+Parsed foreground command:
+As command line: 
+Test 26
+Parsing: "  a bc"
+Parsed foreground command:
+As command line: 
+Test 27
+Parsing: "a  bc"
+Parsed foreground command:
+As command line: 
+Test 28
+Parsing: " a  bc"
+Parsed foreground command:
+As command line: 
+Test 29
+Parsing: "  a bc"
+Parsed foreground command:
+As command line: 
+Test 30
+Parsing: "  a  bc"
+Parsed foreground command:
+As command line: 
+Test 31
+Parsing: "a bc  "
+Parsed foreground command:
+As command line: 
+Test 32
+Parsing: " a bc  "
+Parsed foreground command:
+As command line: 
+Test 33
+Parsing: "a bc  "
+Parsed foreground command:
+As command line: 
+Test 34
+Parsing: " a bc  "
+Parsed foreground command:
+As command line: 
+Test 35
+Parsing: "  a bc  "
+Parsed foreground command:
+As command line: 
+Test 36
+Parsing: "a  bc  "
+Parsed foreground command:
+As command line: 
+Test 37
+Parsing: " a  bc  "
+Parsed foreground command:
+As command line: 
+Test 38
+Parsing: "  a bc  "
+Parsed foreground command:
+As command line: 
+Test 39
+Parsing: "  a  bc  "
+Parsed foreground command:
+As command line: 
+Test 40
+Parsing: "bc a"
+Parsed foreground command:
+As command line: 
+Test 41
+Parsing: " bc a"
+Parsed foreground command:
+As command line: 
+Test 42
+Parsing: "bc a"
+Parsed foreground command:
+As command line: 
+Test 43
+Parsing: " bc a"
+Parsed foreground command:
+As command line: 
+Test 44
+Parsing: "  bc a"
+Parsed foreground command:
+As command line: 
+Test 45
+Parsing: "bc  a"
+Parsed foreground command:
+As command line: 
+Test 46
+Parsing: " bc  a"
+Parsed foreground command:
+As command line: 
+Test 47
+Parsing: "  bc a"
+Parsed foreground command:
+As command line: 
+Test 48
+Parsing: "  bc  a"
+Parsed foreground command:
+As command line: 
+Test 49
+Parsing: "bc a  "
+Parsed foreground command:
+As command line: 
+Test 50
+Parsing: " bc a  "
+Parsed foreground command:
+As command line: 
+Test 51
+Parsing: "bc a  "
+Parsed foreground command:
+As command line: 
+Test 52
+Parsing: " bc a  "
+Parsed foreground command:
+As command line: 
+Test 53
+Parsing: "  bc a  "
+Parsed foreground command:
+As command line: 
+Test 54
+Parsing: "bc  a  "
+Parsed foreground command:
+As command line: 
+Test 55
+Parsing: " bc  a  "
+Parsed foreground command:
+As command line: 
+Test 56
+Parsing: "  bc a  "
+Parsed foreground command:
+As command line: 
+Test 57
+Parsing: "  bc  a  "
+Parsed foreground command:
+As command line: 
+Test 58
+Parsing: "a b"
+Parsed foreground command:
+As command line: 
+Test 59
+Parsing: " a b"
+Parsed foreground command:
+As command line: 
+Test 60
+Parsing: "a b "
+Parsed foreground command:
+As command line: 
+Test 61
+Parsing: " a b "
+Parsed foreground command:
+As command line: 
+Test 62
+Parsing: "  a  b  "
+Parsed foreground command:
+As command line: 
+Test 63
+Parsing: "emacs &"
+Parsed background command:
+As command line: 
+Test 64
+Parsing: "emacs&   "
+Parsed background command:
+As command line: 
+Test 65
+Parsing: "sleep 10&"
+Parsed background command:
+As command line: 
+Test 66
+Parsing: "sleep 10 &"
+Parsed background command:
+As command line: 
+Test 67
+Parsing: "sleep 10  &"
+Parsed background command:
+As command line: 
+Test 68
+Parsing: "sleep 10& "
+Parsed background command:
+As command line: 
+Test 69
+Parsing: "sleep 10 & "
+Parsed background command:
+As command line: 
+Test 70
+Parsing: "sleep 10  & "
+Parsed background command:
+As command line: 
+Test 71
+Parsing: "sleep 10&   "
+Parsed background command:
+As command line: 
+Test 72
+Parsing: "sleep 10 &   "
+Parsed background command:
+As command line: 
+Test 73
+Parsing: "sleep 10  &   "
+Parsed background command:
+As command line: 
+Test 74
+Parsing: "  a  b  &  "
+Parsed background command:
+As command line: 
+Test 75
+Parsing: "&uhoh"
+Test 76
+Parsing: "   &uhoh"
+Test 77
+Parsing: "&uhoh   "
+Parsed background command:
+As command line: 
+Test 78
+Parsing: "  &uhoh  "
+Parsed background command:
+As command line: 
+Test 79
+Parsing: "  & uh oh"
+Test 80
+Parsing: "  & uh oh  "
+Parsed background command:
+As command line: 
+Test 81
+Parsing: "  &   uh oh  "
+Parsed background command:
+As command line: 
+Test 82
+Parsing: "uh&oh"
+Test 83
+Parsing: "uh& oh"
+Test 84
+Parsing: "uh & oh"
+Test 85
+Parsing: "uh &oh"
+Test 86
+Parsing: "  uh&oh"
+Test 87
+Parsing: "  uh& oh"
+Test 88
+Parsing: "  uh & oh"
+Test 89
+Parsing: "  uh &oh"
+Test 90
+Parsing: "  uh&oh  "
+Parsed background command:
+As command line: 
+Test 91
+Parsing: "  uh& oh  "
+Parsed background command:
+As command line: 
+Test 92
+Parsing: "  uh & oh  "
+Parsed background command:
+As command line: 
+Test 93
+Parsing: "  uh &oh  "
+Parsed background command:
+As command line: 
+Test 94
+Parsing: "uh& &oh"
+Test 95
+Parsing: "uh oh&&"
+Test 96
+Parsing: "uh oh &&"
+Test 97
+Parsing: "uh oh & &"
+Test 98
+Parsing: "uh oh &  &"
+Test 99
+Parsing: "uh oh &  &  "
+a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_
+a 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_a_bc_
+a bc 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_bc_a_
+bc a 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_emacs_
+emacs 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_sleep_10_
+sleep 10 
+Freed command array.
+_a_b_
+a b 
+Freed command array.
+Invalid command.
+Invalid command.
+_uhoh_
+uhoh 
+Freed command array.
+_uhoh_
+uhoh 
+Freed command array.
+Invalid command.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+_uhoh_oh_
+uhoh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+_uh_oh_
+uh oh 
+Freed command array.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+Invalid command.
+==2348177== 
+==2348177== HEAP SUMMARY:
+==2348177==     in use at exit: 0 bytes in 0 blocks
+==2348177==   total heap usage: 583 allocs, 583 frees, 8,825 bytes allocated
+==2348177== 
+==2348177== All heap blocks were freed -- no leaks are possible
+==2348177== 
+==2348177== Use --track-origins=yes to see where uninitialised values come from
+==2348177== For lists of detected and suppressed errors, rerun with: -s
+==2348177== ERROR SUMMARY: 664 errors from 8 contexts (suppressed: 0 from 0)

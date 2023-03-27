@@ -1,0 +1,1 @@
+code is compliant with idiomatic pointer style
